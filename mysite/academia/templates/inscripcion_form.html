@@ -1,0 +1,15 @@
+{% extends 'academia/base.html' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+    <h1>{{ title }}</h1>
+    <form method="post" class="form-container">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div class="form-actions">
+            <button type="submit" class="btn btn-success">Guardar</button>
+            <a href="{% url 'academia:inscripcion-list' %}" class="btn btn-secondary back-link">Cancelar</a>
+        </div>
+    </form>
+{% endblock %}

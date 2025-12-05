@@ -1,0 +1,29 @@
+{% extends 'academia/base.html' %}
+
+{% block title %}Material Didáctico{% endblock %}
+
+{% block content %}
+    <h1>Lista de Material Didáctico</h1>
+    <a href="{% url 'academia:material-didactico-create' %}" class="btn btn-primary mb-3">Añadir Material</a>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Curso</th>
+                <th>Descripción</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for material in materiales %}
+                <tr>
+                    <td>{{ material.curso }}</td>
+                    <td>{{ material.descripcion }}</td>
+                    <td>
+                        <a href="{% url 'academia:material-didactico-update' material.pk %}" class="btn btn-sm btn-info">Editar</a>
+                        <a href="{% url 'academia:material-didactico-delete' material.pk %}" class="btn btn-sm btn-danger">Eliminar</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

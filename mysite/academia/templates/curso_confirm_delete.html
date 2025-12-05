@@ -1,0 +1,17 @@
+{% extends 'academia/base.html' %}
+
+{% block title %}Confirmar Eliminación{% endblock %}
+
+{% block content %}
+    <div class="delete-confirmation-container">
+        <h1 class="delete-title">¿Estás seguro de que deseas eliminar el curso "{{ curso.nombre }}"?</h1>
+        <p class="delete-warning">Esta acción no se puede deshacer.</p>
+        <form method="post" class="delete-form">
+            {% csrf_token %}
+            <div class="form-actions">
+                <button type="submit" class="btn btn-danger">Eliminar</button>
+                <a href="{% url 'academia:curso-list' %}" class="btn btn-secondary back-link">Cancelar</a>
+            </div>
+        </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'academia/base.html' %}
+
+{% block title %}Cursos{% endblock %}
+
+{% block content %}
+    <h1>Lista de Cursos</h1>
+    <a href="{% url 'academia:curso-create' %}" class="btn btn-primary mb-3">Añadir Curso</a>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Nombre del Curso</th>
+                <th>Idioma</th>
+                <th>Profesor</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for curso in cursos %}
+                <tr>
+                    <td>{{ curso.nombre_curso }}</td>
+                    <td>{{ curso.idioma.nombre_idioma }}</td>
+                    <td>{{ curso.profesor_asignado|default:"No asignado" }}</td>
+                    <td>
+                        <a href="{% url 'academia:curso-update' curso.pk %}" class="btn btn-sm btn-info">Editar</a>
+                        <a href="{% url 'academia:curso-delete' curso.pk %}" class="btn btn-sm btn-danger">Eliminar</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

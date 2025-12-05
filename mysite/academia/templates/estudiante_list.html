@@ -1,0 +1,31 @@
+{% extends 'academia/base.html' %}
+
+{% block title %}Estudiantes{% endblock %}
+
+{% block content %}
+    <h1>Lista de Estudiantes</h1>
+    <a href="{% url 'academia:estudiante-create' %}" class="btn btn-primary mb-3">Añadir Estudiante</a>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Email</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for estudiante in estudiantes %}
+                <tr>
+                    <td>{{ estudiante.nombre_estudiante }}</td>
+                    <td>{{ estudiante.apellido_estudiante }}</td>
+                    <td>{{ estudiante.email }}</td>
+                    <td>
+                        <a href="{% url 'academia:estudiante-update' estudiante.pk %}" class="btn btn-sm btn-info">Editar</a>
+                        <a href="{% url 'academia:estudiante-delete' estudiante.pk %}" class="btn btn-sm btn-danger">Eliminar</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

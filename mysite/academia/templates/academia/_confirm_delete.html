@@ -1,0 +1,25 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Confirmar Eliminación</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <div class="container">
+        <div class="confirm-delete-box">
+            <h1>¿Estás seguro?</h1>
+            <p>Estás a punto de eliminar el objeto: <strong>{{ object }}</strong>.</p>
+            <p>Esta acción no se puede deshacer.</p>
+            <form method="post">
+                {% csrf_token %}
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-danger">Sí, eliminar</button>
+                    <a href="{{ request.META.HTTP_REFERER|default:'/' }}" class="btn btn-secondary">Cancelar</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

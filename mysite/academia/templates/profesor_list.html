@@ -1,0 +1,31 @@
+{% extends 'academia/base.html' %}
+
+{% block title %}Profesores{% endblock %}
+
+{% block content %}
+    <h1>Lista de Profesores</h1>
+    <a href="{% url 'academia:profesor-create' %}" class="btn btn-primary mb-3">Añadir Profesor</a>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Email</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for profesor in profesores %}
+                <tr>
+                    <td>{{ profesor.nombre_profesor }}</td>
+                    <td>{{ profesor.apellido_profesor }}</td>
+                    <td>{{ profesor.email }}</td>
+                    <td>
+                        <a href="{% url 'academia:profesor-update' profesor.pk %}" class="btn btn-sm btn-info">Editar</a>
+                        <a href="{% url 'academia:profesor-delete' profesor.pk %}" class="btn btn-sm btn-danger">Eliminar</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'academia/base.html' %}
+
+{% block title %}Idiomas{% endblock %}
+
+{% block content %}
+    <h1>Lista de Idiomas</h1>
+    <a href="{% url 'academia:idioma-create' %}" class="btn btn-primary mb-3">Añadir Idioma</a>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for idioma in idiomas %}
+                <tr>
+                    <td>{{ idioma.nombre_idioma }}</td>
+                    <td>
+                        <a href="{% url 'academia:idioma-update' idioma.pk %}" class="btn btn-sm btn-info">Editar</a>
+                        <a href="{% url 'academia:idioma-delete' idioma.pk %}" class="btn btn-sm btn-danger">Eliminar</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

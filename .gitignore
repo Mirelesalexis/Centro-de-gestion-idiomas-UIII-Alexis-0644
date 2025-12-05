@@ -1,2 +1,28 @@
-.venv
-__pycache__
+# Archivos de cache de Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Entorno virtual
+.venv/
+venv/
+ENV/
+env/
+
+# Base de datos de SQLite
+db.sqlite3
+db.sqlite3-journal
+
+# Archivos de configuración local
+local_settings.py
+
+# Archivos de media subidos por los usuarios
+/media/
+
+# Logs
+*.log
+
+# Carpetas de configuracion del editor
+.idea/
+.vscode/

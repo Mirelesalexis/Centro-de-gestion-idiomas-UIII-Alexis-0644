@@ -1,0 +1,33 @@
+{% extends 'academia/base.html' %}
+
+{% block title %}Evaluaciones{% endblock %}
+
+{% block content %}
+    <h1>Lista de Evaluaciones</h1>
+    <a href="{% url 'academia:evaluacion-create' %}" class="btn btn-primary mb-3">Añadir Evaluación</a>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Estudiante</th>
+                <th>Curso</th>
+                <th>Fecha de Evaluación</th>
+                <th>Calificación</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for evaluacion in evaluaciones %}
+                <tr>
+                    <td>{{ evaluacion.inscripcion.estudiante }}</td>
+                    <td>{{ evaluacion.inscripcion.curso }}</td>
+                    <td>{{ evaluacion.fecha_evaluacion }}</td>
+                    <td>{{ evaluacion.calificacion }}</td>
+                    <td>
+                        <a href="{% url 'academia:evaluacion-update' evaluacion.pk %}" class="btn btn-sm btn-info">Editar</a>
+                        <a href="{% url 'academia:evaluacion-delete' evaluacion.pk %}" class="btn btn-sm btn-danger">Eliminar</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
